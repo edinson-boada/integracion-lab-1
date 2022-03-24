@@ -1,0 +1,16 @@
+application:
+  name: IntegracionLab1
+http-client:
+  ogit-resource:
+    base-url: http://ogit.imp.gob.pe/impapi/
+    connect-timeout: 10
+    read-timeout: 10
+    logging-level: BODY
+spreadsheet:
+  id: 12xaeEGPjU16LufeKZCoBh9ArWLHGdNNDo06Gwvumgf0
+credentials:
+  file:
+    path: /credentials.json
+tokens:
+  directory:
+    path: tokens
