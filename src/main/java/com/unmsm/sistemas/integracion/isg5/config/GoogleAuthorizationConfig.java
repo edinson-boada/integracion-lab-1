@@ -48,7 +48,7 @@ public class GoogleAuthorizationConfig {
                 .setAccessType("offline")
                 .build();
 
-        LocalServerReceiver localServerReceiver = new LocalServerReceiver.Builder().setPort(8080).build();
+        LocalServerReceiver localServerReceiver = new LocalServerReceiver.Builder().setPort(3000).build();
 
         return new AuthorizationCodeInstalledApp(
                 flow, localServerReceiver)
