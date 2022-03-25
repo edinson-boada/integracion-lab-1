@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class OgitSelSeguridadRequest {
-    private String fecha;
+public class OgitSelSecurityRequest {
+    private String date;
 }

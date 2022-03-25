@@ -8,9 +8,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface OgitLoginAPI {
-    @Headers({
-            "Accept: */*",
-    })
+    @Headers({"Accept: */*",})
     @POST("login")
     Call<OgitLogin> login(@Body OgitLoginRequest ogitLoginRequest);
 }

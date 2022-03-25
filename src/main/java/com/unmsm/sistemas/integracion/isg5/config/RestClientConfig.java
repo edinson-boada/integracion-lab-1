@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.unmsm.sistemas.integracion.isg5.config.endpoints.EndpointsConfig;
-import com.unmsm.sistemas.integracion.isg5.proxy.api.OgitSelSeguridadAPI;
+import com.unmsm.sistemas.integracion.isg5.proxy.api.OgitSelSecurityAPI;
 import com.unmsm.sistemas.integracion.isg5.proxy.api.OgitLoginAPI;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -30,10 +30,10 @@ public class RestClientConfig {
     }
 
     @Bean
-    OgitSelSeguridadAPI ogitIncidentesAPI(EndpointsConfig.Endpoint ogitResourceEndpoint) {
+    OgitSelSecurityAPI ogitIncidentsAPI(EndpointsConfig.Endpoint ogitResourceEndpoint) {
         return getRetrofitConfig(ogitResourceEndpoint)
                 .addConverterFactory(JacksonConverterFactory.create(getObjectMapper(new ObjectMapper()))).build()
-                .create(OgitSelSeguridadAPI.class);
+                .create(OgitSelSecurityAPI.class);
     }
 
     private Retrofit.Builder getRetrofitConfig(EndpointsConfig.Endpoint endpoint) {

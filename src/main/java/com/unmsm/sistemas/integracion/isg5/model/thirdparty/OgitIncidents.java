@@ -7,8 +7,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class OgitIncidentes {
+public class OgitIncidents {
     private boolean status;
     private String message;
-    private List<OgitIncidentesData> data;
+    private List<OgitIncidentsData> data;
 }

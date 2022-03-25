@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OgitIncidentesMesRequest {
+public class OgitIncidentsMonthRequest {
     private String u;
     private String p;
-    private int mes;
-    private int anio;
+    private int month;
+    private int year;
 }

@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OgitIncidentesRequest {
+public class OgitIncidentsRequest {
     private String u;
     private String p;
-    private String fecha;
+    private String date;
 }

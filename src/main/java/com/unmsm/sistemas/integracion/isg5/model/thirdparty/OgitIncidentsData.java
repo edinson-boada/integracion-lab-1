@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OgitIncidentesData {
+public class OgitIncidentsData {
     private int inc_id;
     private int uni_id;
     private String uni_nombre;
