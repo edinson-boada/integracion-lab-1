@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "e8630b3e-8216-4321-b793-fb0b1d00dd99",
+		"name": "API-laboratorio-1-seguridad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save on GS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"u\": \"ernesto.cancho@unmsm.edu.pe\",\r\n    \"p\": \"&Bg!d9Xt\",\r\n    \"fecha\": \"2022-2-1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/incidents-to-sheets",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"incidents-to-sheets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save on GSh per month",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"u\": \"ernesto.cancho@unmsm.edu.pe\",\r\n    \"p\": \"&Bg!d9Xt\",\r\n    \"year\": 2022,\r\n    \"month\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/incidents-month-to-sheets",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"incidents-month-to-sheets"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
