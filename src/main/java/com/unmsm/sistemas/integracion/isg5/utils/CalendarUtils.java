@@ -8,4 +8,8 @@ public class CalendarUtils {
         date.set(year, month, 0);
         return date.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
+
+    public static String getDate(int year, int month, int day) {
+        return String.valueOf(year).concat("-").concat(String.valueOf(month)).concat("-").concat(String.valueOf(day));
+    }
 }
