@@ -1,7 +1,11 @@
 package com.unmsm.sistemas.integracion.isg5.proxy.impl;
 
 import com.google.api.services.sheets.v4.Sheets;
+import com.google.api.services.sheets.v4.model.BatchUpdateSpreadsheetRequest;
 import com.google.api.services.sheets.v4.model.ClearValuesRequest;
+import com.google.api.services.sheets.v4.model.DeleteDimensionRequest;
+import com.google.api.services.sheets.v4.model.DimensionRange;
+import com.google.api.services.sheets.v4.model.Request;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.unmsm.sistemas.integracion.isg5.config.GoogleAuthorizationConfig;
 import com.unmsm.sistemas.integracion.isg5.mapper.OgitMapper;
@@ -39,6 +43,9 @@ public class OgitGoogleSheetsServiceImpl implements OgitGoogleSheetsService {
     @Value("${spreadsheet.id}")
     private String spreadsheetId;
 
+    @Value("${sheet.id}")
+    private int sheetId;
+
     @Override
     public OgitIncidentsResponse setIncidentsToSheets(OgitIncidentsRequest ogitIncidentsRequest) throws IOException, GeneralSecurityException {
         OgitIncidentsResponse ogitIncidentsResponse = new OgitIncidentsResponse();
@@ -73,6 +80,10 @@ public class OgitGoogleSheetsServiceImpl implements OgitGoogleSheetsService {
                     ogitIncidentsData.getInc_longitud(), ogitIncidentsData.getInc_latitud(), ogitIncidentsData.getInc_contacto_cargo(),
                     ogitIncidentsData.getInc_contacto_institucion(), ogitIncidentsData.getUbigeo(), ogitIncidentsData.getInc_distrito(),
                     ogitIncidentsData.getZon_id(), ogitIncidentsData.getZon_nombre(), ogitIncidentsData.getInc_fecha_registro()));
+
+        sheetsService
+                .spreadsheets()
+                .batchUpdate(spreadsheetId, ThirdpartyUtils.getRequests(sheetId)).execute();
 
         ValueRange body = new ValueRange()
                 .setValues(ThirdpartyUtils.GOOGLE_SHEETS_MATRIX);
@@ -115,7 +126,7 @@ public class OgitGoogleSheetsServiceImpl implements OgitGoogleSheetsService {
 
         //Llenado de celdas
         for (int i = 0; i < ogitIncidentsResponses.size(); i++) {
-            ThirdpartyUtils.GOOGLE_SHEETS_MATRIX.add(Arrays.asList("FECHA", CalendarUtils.getDate(ogitIncidentsMonthRequest.getYear(), ogitIncidentsMonthRequest.getMonth(), i)));
+            ThirdpartyUtils.GOOGLE_SHEETS_MATRIX.add(Arrays.asList("FECHA", CalendarUtils.getDate(ogitIncidentsMonthRequest.getYear(), ogitIncidentsMonthRequest.getMonth(), i+1)));
             ThirdpartyUtils.GOOGLE_SHEETS_MATRIX.add(ThirdpartyUtils.INCIDENTS_DATA);
             for (OgitIncidentsData ogitIncidentsData : ogitIncidentsResponses.get(i).getData()) {
                 ThirdpartyUtils.GOOGLE_SHEETS_MATRIX.add(Arrays.asList(ogitIncidentsData.getInc_id(),
@@ -131,6 +142,10 @@ public class OgitGoogleSheetsServiceImpl implements OgitGoogleSheetsService {
             }
             ThirdpartyUtils.GOOGLE_SHEETS_MATRIX.add(Collections.emptyList());
         }
+
+        sheetsService
+                .spreadsheets()
+                .batchUpdate(spreadsheetId, ThirdpartyUtils.getRequests(sheetId)).execute();
 
         ValueRange body = new ValueRange()
                 .setValues(ThirdpartyUtils.GOOGLE_SHEETS_MATRIX);
