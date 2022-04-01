@@ -8,5 +8,5 @@ import lombok.Setter;
 public class OgitIncidentsRequest {
     private String u;
     private String p;
-    private String date;
+    private String fecha;
 }

@@ -8,5 +8,5 @@ import lombok.Setter;
 @Setter
 @Builder
 public class OgitSelSecurityRequest {
-    private String date;
+    private String fecha;
 }
